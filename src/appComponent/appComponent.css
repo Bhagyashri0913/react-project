@@ -1,0 +1,23 @@
+.App-back-ground {
+    background-color: #282c34;
+    height: 1500px;
+    width: 1500px;
+    display: flex;
+  }
+.body-box{
+    background-color: #aab8d3;
+    height: 520px;
+    width: 900px;
+    align-content: center;
+    display: flex;
+    margin-left: 200px;
+    margin-top: 50px;
+  }
+.heading{
+    align-content: center;
+    align-items: center;
+    font-size:30px;
+    font-weight: bolder;
+    margin-left: 380px;
+    margin-top: 5px;
+  }

@@ -10,6 +10,8 @@ const App=()=> {
   const [activeQuestion,setActiveQuestion] = useState(0);
   const [answers,setAnswer] = useState([]);
 
+  
+
   const quizStartHandler=()=>{
     setScreen(1);
   }
@@ -22,16 +24,21 @@ const App=()=> {
   const submit=()=>{
     setScreen(0);
   }
-  console.log(screen_data)
   return (
     <Fragment>
     {screen === 0 && <AppComponent onQuizStart={quizStartHandler}/>}
     {screen === 1 && <Screen1
       nextHandler1={next1}
-      data = {screen_data}
+      data1 = {screen_data}
     />}
-    {screen === 2 && <Screen2 nextHandler2={next2}/>}
-    {screen === 3 && <Screen3 submitHandler={submit}/>}
+    {screen === 2 && <Screen2
+      nextHandler2={next2}
+      data2 = {screen_data}
+    />}
+    {screen === 3 && <Screen3
+      submitHandler={submit}
+      data3 = {screen_data}
+    />}
     </Fragment>
   )
 }

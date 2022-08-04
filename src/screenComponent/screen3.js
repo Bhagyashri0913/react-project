@@ -1,8 +1,11 @@
 import "./screen3.css";
+import { useState } from "react";
 
 const Screen3=({submitHandler,data3,screen3_score})=> {
+  const [next,setNext] = useState('');
 
 let handler=(event)=>{
+  setNext(0);
 let useranswer = event.target.value;
 if (useranswer === data3.screen_data["screen-3"].correct_answer){
   screen3_score=+1;
@@ -17,7 +20,9 @@ if (useranswer === data3.screen_data["screen-3"].correct_answer){
         <div>
         <input type="text" className="answer-box" placeholder="Type answer here..." onChange={handler}></input>
         </div>
-        <button className="submit-button" onClick={submitHandler}>Submit</button>
+        {next ===0 &&
+        <button className="submit-button" onClick={submitHandler}>{next}</button>
+        }
 
     </div>
 </div>

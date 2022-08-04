@@ -37,9 +37,14 @@ font-weight:lighter;
 height: 45px;
 width: 150px;
 margin-left: 355px;
-margin-top: 130px;
+margin-top: 70px;
 font-size: 18px;
 font-weight:bold;
 border: 3px;
 background-color: rgb(137, 125, 182);
+}
+.error-text{
+margin-top: 50px;
+margin-left:40px;
+color: red;
 }

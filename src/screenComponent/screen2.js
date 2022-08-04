@@ -1,6 +1,6 @@
 import "./screen2.css";
 
-const Screen2=({nextHandler2,data2,type2})=> {
+const Screen2=({nextHandler2,data2,screen2_score})=> {
   return (
 <div className="screen2">
      <div className="screen-content2">

@@ -10,34 +10,43 @@ const App=()=> {
   const [activeQuestion,setActiveQuestion] = useState(0);
   const [answers,setAnswer] = useState([]);
 
-  
+
 
   const quizStartHandler=()=>{
     setScreen(1);
   }
-  const next1=()=>{
-    setScreen(2);
-  }
   const next2=()=>{
     setScreen(3);
   }
-  const submit=()=>{
+  const submit=(event)=>{
+    event.preventDefault();
     setScreen(0);
+    alert (totalScore);
   }
+let total_screen1Score=0;
+let total_screen2Score=0;
+let total_screen3Score=0;
+
+let totalScore = total_screen1Score + total_screen2Score + total_screen3Score;
+
+
   return (
     <Fragment>
     {screen === 0 && <AppComponent onQuizStart={quizStartHandler}/>}
     {screen === 1 && <Screen1
-      nextHandler1={next1}
       data1 = {screen_data}
+      screen1_score={total_screen1Score}
+      onsetScreen={setScreen}
     />}
     {screen === 2 && <Screen2
       nextHandler2={next2}
       data2 = {screen_data}
+      screen2_score={total_screen2Score}
     />}
     {screen === 3 && <Screen3
       submitHandler={submit}
       data3 = {screen_data}
+      screen3_score={total_screen3Score}
     />}
     </Fragment>
   )

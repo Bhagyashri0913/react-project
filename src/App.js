@@ -1,9 +1,12 @@
 import { useState,useEffect, Fragment} from "react";
 import AppComponent from "./Components/AppComponent/AppComponent";
 import ScreenComponent from "./Components/ScreenComponent";
-import screen_data from "./Data/Data.json";
+import data from "./Data/Data.json";
+const flattenScreenData = Object.entries(data.screen_data);
+
 const App=()=> {
   const [screen,setScreen] = useState(0);
+  const [activeScreen,setActiveScreen] = useState(0);
 
   const quizStartHandler=(event)=>{
     event.preventDefault();
@@ -12,23 +15,18 @@ const App=()=> {
   const submit=(event)=>{
     event.preventDefault();
     setScreen(0);
-    alert (totalScore);
   }
-let total_screen1Score=0;
-let total_screen2Score=0;
-let total_screen3Score=0;
-
-let totalScore = total_screen1Score + total_screen2Score + total_screen3Score;
-
+  
+const screenElem = <ScreenComponent
+        data={flattenScreenData[activeScreen]} // pass only the data that is needed in the screen
+        activeScreen={activeScreen}
+        setActiveScreen={setActiveScreen} // this way we can set the screen from inside the screen component
+    />;
 
   return (
     <Fragment>
-    {screen === 0 && <AppComponent onQuizStart={quizStartHandler}/>}
-    {screen === 1 && <ScreenComponent
-      data = {screen_data}
-      submitHandler={submit}
-      screen1_score={total_screen1Score}
-    />}
+     { screen===0 && <AppComponent onQuizStart={quizStartHandler}/>}
+     {screen===1 && <div>{screenElem}</div>}
     </Fragment>
   )
 }

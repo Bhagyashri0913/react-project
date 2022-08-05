@@ -27,11 +27,8 @@ console.log(data2.screen_data["screen-2"].answers)
      <div className="screen-content2">
         <h2 className="question2">{data2.screen_data["screen-2"].question}</h2>
         <h3 className="question-type2">{data2.screen_data["screen-2"].type}</h3>
-        <button className="question-choices" onClick={clickHandler}><h2>{data2.screen_data["screen-2"].answers[0]}</h2></button>
+        {(data2.screen_data["screen-2"].answers.map((answer)=><button className="question-choices" onClick={clickHandler}>{answer}</button>))}
 
-        <button className="question-choices"><h2>{data2.screen_data["screen-2"].answers[1]}</h2></button>
-        <button className="question-choices"><h2>{data2.screen_data["screen-2"].answers[2]}</h2></button>
-        <button className="question-choices"><h2>{data2.screen_data["screen-2"].answers[3]}</h2></button>
         {next===0 && <div>
         <button className="next-button" onClick={nextHandler2}>{next}</button>
         </div>

@@ -35,7 +35,7 @@ let total_screen3Score=0;
 
 let totalScore = total_screen1Score + total_screen2Score + total_screen3Score;
 
-console.log(total_screen1Score)
+console.log(total_screen3Score)
   return (
     <Fragment>
     {screen === 0 && <AppComponent onQuizStart={quizStartHandler}/>}

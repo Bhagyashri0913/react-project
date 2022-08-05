@@ -1,4 +1,4 @@
-.screen1{
+.screen{
     background-color: #aab8d3;
     display:flex;
     height: 1500px;
@@ -6,20 +6,20 @@
     align-content: center;
 
 }
-.screen-content1{
+.screen-content{
 background-color:#d9dde9;
 margin-top: 90px;
 margin-left: 180px;
 height: 460px;
 width:900px;
 }
-.question1{
+.question{
 margin-left:40px;
 margin-top:50px;
 font-size: 23px;
 font-weight: 600;
 }
-.question-type1{
+.question-type{
 margin-left:50px;
 margin-top:0px;
 font-size: 23px;
@@ -49,3 +49,23 @@ font-weight:bold;
 border: 3px;
 background-color: rgb(137, 125, 182);
 }
+.answer-box{
+    width: 200px;
+    height:35px;
+    margin-left:40px;
+    margin-top:20px;
+    font-size: 23px;
+    font-weight: 500;
+    border: 10px;
+    }
+
+.submit-button{
+        height: 45px;
+        width: 150px;
+        margin-left: 355px;
+        margin-top: 145px;
+        font-size: 18px;
+        font-weight:bold;
+        border: 3px;
+        background-color: rgb(137, 125, 182);
+        }

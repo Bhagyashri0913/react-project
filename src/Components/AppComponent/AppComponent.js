@@ -1,4 +1,4 @@
-import './appComponent.css';
+import './AppComponent.css';
 
 const AppComponent = ({onQuizStart}) => {
     return (

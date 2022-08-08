@@ -4,7 +4,7 @@ import EndComponent from "./Components/EndComponent";
 import ScreenComponent from "./Components/ScreenComponent";
 import data from "./Data/Data.json";
 const flattenScreenData = Object.entries(data.screen_data);
-
+console.log(flattenScreenData)
 const App=()=> {
   const [screen,setScreen] = useState(0);
   const [activeScreen,setActiveScreen] = useState(0);

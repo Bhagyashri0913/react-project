@@ -1,6 +1,6 @@
-import './AppComponent.css';
+import './StartComponent.css';
 
-const AppComponent = ({onQuizStart}) => {
+const StartComponent = ({onQuizStart}) => {
     return (
       <div className="App">
       <div className="App-back-ground">
@@ -16,4 +16,4 @@ const AppComponent = ({onQuizStart}) => {
       </div>
     );
   }
- export default AppComponent;
+ export default StartComponent;

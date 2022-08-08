@@ -1,20 +1,20 @@
 import { useState } from "react";
 import "./ScreenComponent.css";
 
-const ScreenComponent=({data,activeScreen,setActiveScreen,submitHandler})=> {
-  const [type,setType] = useState('single-choice');
+const ScreenComponent=({data,activeScreen,setActiveScreen,submitHandler,setScreen})=> {
+  const [type,setType] = useState(data[1].type);
   const [selected,setSelected] = useState('');
   const [next,setNext] = useState(false);
   const [answerselected,setAnswerSelected] = useState('');
   const [activescreen_score,setActivescreen_score]=useState(0);
 
 
-
+console.log(data[1].type)
 let nextHandler=()=>{
   let useranswer = setSelected(data[1].answer);
   onFinishScreen()
   if(setSelected){
-  if( useranswer = data.screen_data.correct_answer){
+  if( useranswer = data[1].correct_answer){
   activescreen_score =+ 1;
   }
   }
@@ -22,6 +22,9 @@ let nextHandler=()=>{
 
 const onFinishScreen = () => {
   setActiveScreen(activeScreen + 1);
+  if(data[activeScreen.lenght]){
+  setScreen(2);
+  }
 }
 
 const clickHandler=()=>{

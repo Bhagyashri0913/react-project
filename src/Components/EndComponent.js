@@ -6,6 +6,7 @@ const EndComponent = ({onQuizEnd}) => {
        <div className="heading"><p>End Quiz </p>
          <div className="start-box">
            <button className="start-button" onClick={onQuizEnd}>Submit Quiz</button>
+           <p className="check">CHECK YOUR SCORE !!!</p>
          </div>
        </div>
       </div>

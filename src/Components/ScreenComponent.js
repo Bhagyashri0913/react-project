@@ -1,48 +1,49 @@
 import { useState } from "react";
 import "./ScreenComponent.css";
 
-const ScreenComponent=({data,activeScreen,setActiveScreen,submitHandler,setScreen})=> {
-  console.log(data)
-  const [type,setType] = useState(data[1].type);
+const ScreenComponent=({data,activeScreen,setActiveScreen,submitHandler,setScreen,activescreen_score,setActivescreen_score})=> {
+
   const [selected,setSelected] = useState('');
   const [next,setNext] = useState(false);
-  const [answerselected,setAnswerSelected] = useState('');
-  const [activescreen_score,setActivescreen_score]=useState(0);
+  
 
-
-console.log(activescreen_score)
-let nextHandler=()=>{
-  let useranswer = setSelected(data[1].answer);
+let nextHandler=(event)=>{
+  event.preventDefault();
   onFinishScreen()
-  if(setSelected){
-  if( useranswer === data[1].correct_answer){
-  setActivescreen_score(activescreen_score + 1);
-  }
-  }
+
 }
+console.log("hello",activescreen_score);
 
 const onFinishScreen = () => {
-  setActiveScreen(activeScreen + 1);
-  console.log('hello!',activeScreen)
-  if(data[activeScreen.length]){
+  if(activeScreen < data.length){
+    setActiveScreen(activeScreen + 1);
+    setNext(false);
+  }else if(activeScreen===data.length){
   setScreen(2);
   }
 }
 
-const clickHandler=()=>{
-  if(setSelected){
-    setNext(true);
-  }
-  setAnswerSelected(true);
+const clickHandler=(event) => {
+  setNext(true);
+  let useranswer= event.target;
+  console.log(useranswer)
+if(useranswer===data[1].correct_answer){
+  setActivescreen_score(activescreen_score+1)
+  console.log("hii")
+}
 }
 
-const handler=()=>{
-
+const handler=(event)=>{
+let useranswer = event.target.value;
+if(useranswer=data[1].correct_answer){
+  setActivescreen_score(activescreen_score+1)
 }
-console.log(data[1].question)
+setNext(true);
+}
+
 let component ;
 
-if(type=== "single-choice"){
+if(data[1].type==="single-choice"){
  component = <div>
  <h2 className="question">{data[1].question}</h2>
  <h3 className="question-type">{data[1].type}</h3>
@@ -53,7 +54,7 @@ if(type=== "single-choice"){
  <button className="next-button" onClick={nextHandler}>Next{next}</button>
  </div>}
  </div>
-}else if(type==="multiple-choice"){
+}else if(data[1].type==="multiple-choice"){
 component = <div>
         <h2 className="question">{data[1].question}</h2>
         <h3 className="question-type">{data[1].type}</h3>
@@ -64,7 +65,7 @@ component = <div>
         <button className="next-button" onClick={nextHandler}>Next{next}</button>
         </div>}
     </div>
-}else if(type==="single-input"){
+}else if(data[1].type==="single-input"){
  component =  <div>
      <h2 className="question">{data[1].question}</h2>
      <h3 className="question-type">{data[1].type}</h3>
@@ -72,7 +73,7 @@ component = <div>
      <input type="text" className="answer-box" placeholder="Type answer here..." onChange={handler}></input>
      </div>
      {next  &&
-     <button className="next-button" onClick={clickHandler}>Next{next}</button>
+     <button className="next-button" onClick={onFinishScreen}>Next{next}</button>
      }
 </div>
 }
@@ -81,11 +82,8 @@ return (
     <div className="screen">
      <div className="screen-content">
 {component}
-
-
 </div>
 </div>
-
 </div>
   );
 }

@@ -31,7 +31,11 @@
   }
   .best{
     font-size: 25px;
-    margin-left: 160px;
+    margin-left: 140px;
+  }
+  .check{
+    font-size: 23px;
+    margin-left: 110px;
   }
   .start-button{
     height: 45px;

@@ -8,7 +8,7 @@ const StartComponent = ({onQuizStart}) => {
        <div className="heading"><p>Quiz App</p>
          <div className="start-box">
            <button className="start-button" onClick={onQuizStart}>START QUIZ</button>
-          <p className="best">BEST LUCK !!!</p>
+          <p className="best">BEST OF LUCK !!!</p>
          </div>
        </div>
       </div>

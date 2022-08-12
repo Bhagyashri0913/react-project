@@ -13,10 +13,12 @@ const App=()=> {
   const [activeScreen,setActiveScreen] = useState(0);
   const [activescreen_score,setActivescreen_score]= useState(0);
 
+
   const quizStartHandler=(event)=>{
     event.preventDefault();
     setScreen(1);
   }
+  
 
   const quizEndHandler=(event)=>{
     event.preventDefault();
@@ -25,6 +27,8 @@ const App=()=> {
     setActiveScreen(0);
     setActivescreen_score(0);
   }
+// add data to cookie
+
 
 const screenElem = <ScreenComponent
         data={flattenScreenData[activeScreen]}

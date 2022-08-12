@@ -37,7 +37,7 @@ border-width: 1px;
 border-radius: 2px;
 }
 .question-choices-tick{
-color: blue;
+background-color: rgb(171, 171, 234);
 }
 .next-button{
 height: 45px;
@@ -47,7 +47,7 @@ margin-top: 120px;
 font-size: 18px;
 font-weight:bold;
 border: 3px;
-background-color: rgb(137, 125, 182);
+background-color: rgb(10, 173, 248);
 }
 .answer-box{
     width: 200px;

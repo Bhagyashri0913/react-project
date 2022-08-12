@@ -5,37 +5,50 @@ const ScreenComponent=({data,activeScreen,setActiveScreen,submitHandler,setScree
 
   const [selected,setSelected] = useState('');
   const [next,setNext] = useState(false);
-  
 
-let nextHandler=(event)=>{
-  event.preventDefault();
-  onFinishScreen()
-
-}
 console.log("hello",activescreen_score);
 
-const onFinishScreen = () => {
+const nextHandler = (event) => {
+  event.preventDefault();
+
   if(activeScreen < data.length){
     setActiveScreen(activeScreen + 1);
+    event.target.classList.remove("question-choices-tick");
     setNext(false);
+
   }else if(activeScreen===data.length){
   setScreen(2);
   }
 }
 
-const clickHandler=(event) => {
+const clickHandler1=(event) => {
+  event.preventDefault();
   setNext(true);
-  let useranswer= event.target;
-  console.log(useranswer)
-if(useranswer===data[1].correct_answer){
+  let useranswer1= event.target.textContent;
+  event.target.classList.add("question-choices-tick");
+  console.log(useranswer1)
+
+if(useranswer1===data[1].correct_answer){
   setActivescreen_score(activescreen_score+1)
-  console.log("hii")
+}
+}
+const clickHandler2=(event) => {
+  event.preventDefault();
+  setNext(true);
+  let useranswer2= event.target.textContent;
+  event.target.classList.add("question-choices-tick");
+
+if(useranswer2===data[1].correct_answer[0]){
+  setActivescreen_score(activescreen_score+1)
+}else if(useranswer2===data[1].correct_answer[1]){
+  setActivescreen_score(activescreen_score+1)
 }
 }
 
-const handler=(event)=>{
-let useranswer = event.target.value;
-if(useranswer=data[1].correct_answer){
+const clickHandler3=(event)=>{
+event.preventDefault();
+let useranswer3 = event.target.value;
+if(useranswer3===data[1].correct_answer){
   setActivescreen_score(activescreen_score+1)
 }
 setNext(true);
@@ -47,7 +60,7 @@ if(data[1].type==="single-choice"){
  component = <div>
  <h2 className="question">{data[1].question}</h2>
  <h3 className="question-type">{data[1].type}</h3>
- {(data[1].answers.map((answer)=><button className="question-choices" onClick={clickHandler}>{answer}</button>))}
+ {(data[1].answers.map((answer)=><button className="question-choices" onClick={clickHandler1}>{answer}</button>))}
 
  {next  &&
  <div>
@@ -58,7 +71,7 @@ if(data[1].type==="single-choice"){
 component = <div>
         <h2 className="question">{data[1].question}</h2>
         <h3 className="question-type">{data[1].type}</h3>
-        {(data[1].answers.map((answer)=><button className="question-choices" onClick={clickHandler}>{answer}</button>))}
+        {(data[1].answers.map((answer)=><button className="question-choices" onClick={clickHandler2}>{answer}</button>))}
 
         {next &&
         <div>
@@ -70,10 +83,10 @@ component = <div>
      <h2 className="question">{data[1].question}</h2>
      <h3 className="question-type">{data[1].type}</h3>
      <div>
-     <input type="text" className="answer-box" placeholder="Type answer here..." onChange={handler}></input>
+     <input type="text" className="answer-box" placeholder="Type answer here..." onChange={clickHandler3}></input>
      </div>
      {next  &&
-     <button className="next-button" onClick={onFinishScreen}>Next{next}</button>
+     <button className="next-button" onClick={nextHandler}>Next{next}</button>
      }
 </div>
 }

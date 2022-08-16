@@ -7,7 +7,6 @@ import {useCookies}from "react-cookie";
 
 const flattenScreenData = Object.entries(data.screen_data);
 
-
 const App=()=> {
   const [screen,setScreen] = useState(0);
   const [activeScreen,setActiveScreen] = useState(0);
@@ -22,13 +21,14 @@ const App=()=> {
 
   const quizEndHandler=(event)=>{
     event.preventDefault();
-    alert(`You scored ${activescreen_score } marks !!!`)
+    alert(`You scored ${score} marks !!!`)
     setScreen(0);
     setActiveScreen(0);
     setActivescreen_score(0);
   }
-// add data to cookie
-
+// add data to local storage
+localStorage.setItem("score",JSON.stringify(activescreen_score));
+let score = localStorage.getItem("score",JSON.stringify(activescreen_score));
 
 const screenElem = <ScreenComponent
         data={flattenScreenData[activeScreen]}

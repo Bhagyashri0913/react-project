@@ -1,21 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ScreenComponent.css";
 
-const ScreenComponent=({data,activeScreen,setActiveScreen,submitHandler,setScreen,activescreen_score,setActivescreen_score})=> {
+const ScreenComponent=({data,activeScreen,setActiveScreen,setScreen,activescreen_score,setActivescreen_score})=> {
+const [next,setNext] = useState(false);
+const [selected,setSelected]=useState(false);
+const[msqScore,setMcqscore]=useState(0);
 
-  const [selected,setSelected] = useState('');
-  const [next,setNext] = useState(false);
-
-console.log("hello",activescreen_score);
-
-const nextHandler = (event) => {
-  event.preventDefault();
-
+const nextHandler = () => {
   if(activeScreen < data.length){
     setActiveScreen(activeScreen + 1);
-    event.target.classList.remove("question-choices-tick");
     setNext(false);
-
   }else if(activeScreen===data.length){
   setScreen(2);
   }
@@ -24,31 +18,47 @@ const nextHandler = (event) => {
 const clickHandler1=(event) => {
   event.preventDefault();
   setNext(true);
-  let useranswer1= event.target.textContent;
-  event.target.classList.add("question-choices-tick");
-  console.log(useranswer1)
+let useranswer= event.target.textContent;
+setSelected(true);
+event.target.classList.add("question-choices-tick");
 
-if(useranswer1===data[1].correct_answer){
+if(next===true){
+  setSelected(false);
+  event.target.classList.remove("question-choices-tick");
+}
+if(useranswer===data[1].correct_answer){
   setActivescreen_score(activescreen_score+1)
 }
+
 }
+
 const clickHandler2=(event) => {
   event.preventDefault();
   setNext(true);
-  let useranswer2= event.target.textContent;
-  event.target.classList.add("question-choices-tick");
+  let useranswer= event.target.textContent;
 
-if(useranswer2===data[1].correct_answer[0]){
+ event.target.classList.add("question-choices-tick");
+
+if(useranswer===data[1].correct_answer[0]){
   setActivescreen_score(activescreen_score+1)
-}else if(useranswer2===data[1].correct_answer[1]){
+  setMcqscore(msqScore+1);
+}else if(useranswer===data[1].correct_answer[1]){
   setActivescreen_score(activescreen_score+1)
+  setMcqscore(msqScore+1);
+  }else if (useranswer===data[1].answers[2]){
+    if(msqScore>=1)
+    setActivescreen_score(activescreen_score-1)
+  }else if (useranswer===data[1].answers[3]){
+    if(msqScore>=1)
+    setActivescreen_score(activescreen_score-1)
+  }
 }
-}
+console.log(activescreen_score)
 
 const clickHandler3=(event)=>{
 event.preventDefault();
-let useranswer3 = event.target.value;
-if(useranswer3===data[1].correct_answer){
+let useranswer = event.target.value;
+if(useranswer===data[1].correct_answer){
   setActivescreen_score(activescreen_score+1)
 }
 setNext(true);
@@ -60,7 +70,7 @@ if(data[1].type==="single-choice"){
  component = <div>
  <h2 className="question">{data[1].question}</h2>
  <h3 className="question-type">{data[1].type}</h3>
- {(data[1].answers.map((answer)=><button className="question-choices" onClick={clickHandler1}>{answer}</button>))}
+ {(data[1].answers.map((answer,index)=><button key={index} className="question-choices" onClick={clickHandler1}>{answer}</button>))}
 
  {next  &&
  <div>
@@ -71,7 +81,7 @@ if(data[1].type==="single-choice"){
 component = <div>
         <h2 className="question">{data[1].question}</h2>
         <h3 className="question-type">{data[1].type}</h3>
-        {(data[1].answers.map((answer)=><button className="question-choices" onClick={clickHandler2}>{answer}</button>))}
+        {(data[1].answers.map((answer,index)=><button key ={index}className="question-choices" onClick={clickHandler2}>{answer}</button>))}
 
         {next &&
         <div>

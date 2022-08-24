@@ -1,8 +1,9 @@
-import { useState,useEffect, Fragment} from "react";
+import { useState,Fragment} from "react";
 import StartComponent from "./Components/StartComponent";
 import EndComponent from "./Components/EndComponent";
 import ScreenComponent from "./Components/ScreenComponent";
 import data from "./data/data.json";
+import React from "react";
 
 
 

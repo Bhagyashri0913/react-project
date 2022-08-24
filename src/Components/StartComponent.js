@@ -1,4 +1,5 @@
 import './StartComponent.css';
+import React from "react";
 
 const StartComponent = ({onQuizStart}) => {
     return (

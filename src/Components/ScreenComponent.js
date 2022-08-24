@@ -2,6 +2,7 @@ import "./ScreenComponent.css";
 import SingleInput from "./SingleInput";
 import MultipleSelect from "./MultipleSelect";
 import SingleSelect from "./SingleSelect";
+import React from "react";
 
 const ScreenComponent=({data,activeScreen,setActiveScreen,setScreen,activescreen_score,setActivescreen_score})=> {
 
@@ -15,8 +16,6 @@ activescreen_score={activescreen_score}
 setActiveScreen={setActiveScreen}
 setActivescreen_score={setActivescreen_score} 
 setScreen={setScreen}/>
-
- 
 }else if(data[1].type==="multiple-choice"){
 component = <MultipleSelect 
 data={data}
@@ -25,8 +24,6 @@ activescreen_score={activescreen_score}
 setActiveScreen={setActiveScreen}
 setActivescreen_score={setActivescreen_score} 
 setScreen={setScreen}/>
-
-
 }else if(data[1].type==="single-input"){
  component = <SingleInput 
  data={data}
@@ -37,9 +34,9 @@ setScreen={setScreen}/>
  setScreen={setScreen}/>
 }
 return (
-  <div>
-    <div className="screen">
-     <div className="screen-content">
+<div>
+<div className="screen">
+<div className="screen-content">
 {component}
 </div>
 </div>

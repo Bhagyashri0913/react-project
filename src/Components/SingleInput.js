@@ -1,4 +1,5 @@
 import { useState} from "react";
+import React from "react";
 
 const SingleInput = (data,activeScreen,setActiveScreen,setScreen) => {
   const [next,setNext] = useState(false);
